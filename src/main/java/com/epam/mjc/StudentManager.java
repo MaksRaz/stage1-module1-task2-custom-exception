@@ -5,8 +5,13 @@ public class StudentManager {
 
   private static final long[] IDs = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
 
-  public Student find(long studentID) {
-    return Student.getValueOf(studentID);
+  public Student find(long studentID) throws StudentNotFoundException {
+    if (studentID < 1 || studentID > 10){
+      throw  new StudentNotFoundException("Could not find student with ID " + studentID);
+    }
+    else {
+      return Student.getValueOf(studentID);
+    }
   }
 
   public static void main(String[] args) {
